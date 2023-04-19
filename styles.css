@@ -1,0 +1,13 @@
+@media (min-width: 576px) {
+    .custom-col-8 {
+      width: calc(100%/7);
+    }
+
+    .custom-col-9 {
+        width: calc(100%/3.5);
+      }
+
+      /* .bg{
+        background-color: #dadce0;
+      } */
+  }
