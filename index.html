@@ -583,14 +583,15 @@
                     }
                 }
 
+                
                 for (let i = 0; i < buttons.length; i++) {
                     const button = buttons[i];
 
                     button.addEventListener('click', function () {
                         const value = button.innerText;
 
-
-                        if (value == "AC") {
+                        try{
+                            if (value == "AC") {
                             currentValue = "";
                             display.value = currentValue;
                         } else if (value == "=") {
@@ -614,6 +615,14 @@
                             display.value = currentValue;
 
                         }
+
+                        }
+                        catch(error){
+                            console.log("error")
+                            currentValue ="ERROR"
+                            display.value = currentValue;
+                        }
+                        
 
                     })
 
