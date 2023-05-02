@@ -50,10 +50,10 @@
                             aria-label=".form-control-lg example" style="padding-top: 15px;">
                         <div class=" screen row gx-1" id="screen1">
 
-                            <div class="col-6 custom-col-9  d-none d-sm-block">
+                            <!-- <div class="col-6 custom-col-9  d-none d-sm-block">
                                 <div class="row">
                                     <div class="bg col-6" style="padding-right: 0px; margin-right: -5px;">
-                                        <button type="button" class="btn btn-light w-100 mt-2 border"
+                                        <button type="button" class="btn btn-light w-100 mt-2 border rad-btn active-btn"
                                             style="background-color:#dadce0 ;font-weight: 450px;">
                                             Rad
                                             <span style="float:right; margin-right: -4px;">
@@ -64,13 +64,30 @@
 
 
                                     <div class="bg col-6" style="padding-left: 0px; margin-left: -5px;padding-right: 0px;">
-                                        <button type="button" class="btn btn-light w-100 mt-2 border"
+                                        <button type="button" class="btn btn-light w-100 mt-2 border deg-btn"
                                             style="background-color:#dadce0 ;font-weight: 450px;">
                                             Deg
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            
+                            <div class="col-6 custom-col-9 d-none d-sm-block">
+                                <div class="row">
+                                  <div class=" bg col-6 poda" style="padding-right: 0px; margin-right: -5px;">
+                                    <button type="button" class="btn btn-light w-100 mt-2 border rad-btn active-btn" style="background-color:#dadce0; font-weight: 450px;">
+                                      Rad
+                                      <span style="float:right; margin-right: -4px; color:gray">|</span>
+                                    </button>
+                                  </div>
+                                  <div class="bg col-6 poda" style="padding-left: 0px; margin-left: -5px;padding-right: 2px; margin-right: 0px;">
+                                    <button type="button" class="btn btn-light w-100 mt-2 border deg-btn " style="background-color:#dadce0; font-weight: 450px;">
+                                      Deg
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
 
 
 
@@ -487,6 +504,27 @@
 
 
         </div>
+        <!-- <script>
+            const radBtn = document.querySelector(".rad-btn");
+            const degBtn = document.querySelector(".deg-btn");
+
+            radBtn.addEventListener("click", function () {
+                if (!this.classList.contains("active-btn")) {
+                    this.classList.add("active-btn");
+                    degBtn.classList.remove("active-btn");
+                    degBtn.style.color = "grey";
+                }
+            });
+
+            degBtn.addEventListener("click", function () {
+                if (!this.classList.contains("active-btn")) {
+                    this.classList.add("active-btn");
+                    radBtn.classList.remove("active-btn");
+                    radBtn.style.color = "grey";
+                }
+            });
+
+        </script> -->
 
         <script>
             function showScreen(screenId) {
@@ -561,6 +599,51 @@
                         display.value = currentValue
 
                     }
+                    else if(currentValue.includes("°") && currentValue.includes("sin"))
+                    {
+                        const refinedNumber = currentValue.replace("°",'');
+                        console.log(refinedNumber)
+                        const first = refinedNumber.indexOf("(");
+                        const last = refinedNumber.indexOf(")");
+                        const newNumber = refinedNumber.slice(first+1,last);
+                        console.log(newNumber);
+                        const angle = parseFloat(newNumber);
+                        const degree = angle * Math.PI / 180;
+                        const sinValue = Math.sin(degree);
+                        currentValue = sinValue.toString()
+                        display.value = currentValue
+
+                    }
+                    else if(currentValue.includes("°") && currentValue.includes("cos"))
+                    {
+                        const refinedNumber = currentValue.replace("°",'');
+                        console.log(refinedNumber)
+                        const first = refinedNumber.indexOf("(");
+                        const last = refinedNumber.indexOf(")");
+                        const newNumber = refinedNumber.slice(first+1,last);
+                        console.log(newNumber);
+                        const angle = parseFloat(newNumber);
+                        const degree = angle * Math.PI / 180;
+                        const sinValue = Math.cos(degree);
+                        currentValue = sinValue.toString()
+                        display.value = currentValue
+
+                    }
+                    else if(currentValue.includes("°") && currentValue.includes("tan"))
+                    {
+                        const refinedNumber = currentValue.replace("°",'');
+                        console.log(refinedNumber)
+                        const first = refinedNumber.indexOf("(");
+                        const last = refinedNumber.indexOf(")");
+                        const newNumber = refinedNumber.slice(first+1,last);
+                        console.log(newNumber);
+                        const angle = parseFloat(newNumber);
+                        const degree = angle * Math.PI / 180;
+                        const sinValue = Math.tan(degree);
+                        currentValue = sinValue.toString()
+                        display.value = currentValue
+
+                    }
 
                     else {
                         console.log(currentValue)
@@ -599,6 +682,14 @@
                         } else if (value == "x!") {
                             currentValue += "!";
                             display.value = currentValue;
+                        }
+                        else if(value =="Deg"){
+                            currentValue +="°";
+                            display.value = currentValue;
+
+                        }
+                        else if (value.includes("Rad")){
+                            evaluate();
                         }
                         else if (value == "Fx") {
 
