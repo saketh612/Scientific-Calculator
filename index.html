@@ -580,6 +580,23 @@
                         display.value = currentValue;
 
                     }
+                    else if(currentValue.includes("Inv") && currentValue.includes("^"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(","")
+                        const query = refinedNumber.slice(0,-1);
+                        const PowerIndex = query.indexOf("^");
+                        const base = query.slice(0, PowerIndex)
+                        const exp = query.slice(PowerIndex + 1)
+                        console.log(base)
+                        console.log(exp)
+                        const num_base = parseInt(base)
+                        const num_exp = parseInt(exp)
+                        const ans = Math.pow(num_base, 1/num_exp)
+                        console.log(ans);
+                        currentValue = ans.toString()
+                        display.value = currentValue
+
+                    }
 
                     else if(currentValue.includes("^")){
                         if(currentValue.includes("π"))
@@ -599,6 +616,7 @@
                         display.value = currentValue
 
                     }
+                    
                     else if(currentValue.includes("Inv") && currentValue.includes("sin"))
                     {
                         const refinedNumber = currentValue.replace("Inv(sin","Math.asin")
@@ -632,9 +650,9 @@
                         display.value = currentValue;
                     }
 
-                    else if(currentValue.includes("Inv") && currentValue.includes("ln"))
+                    else if(currentValue.includes("Inv") && currentValue.includes("log"))
                     {
-                        const refinedNumber = currentValue.replace("Inv(ln","10^")
+                        const refinedNumber = currentValue.replace("Inv(log","10^")
                         const Inversedfunction = refinedNumber.slice(0,-1);
                         console.log(Inversedfunction);
                         const PowerIndex = Inversedfunction.indexOf("^")
@@ -649,6 +667,17 @@
                         currentValue = ans.toString()
                         display.value = currentValue
                         
+                    }
+
+                    else if(currentValue.includes("Inv") && currentValue.includes("ln"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(ln","Math.exp");
+                        const RerefinedNumber = refinedNumber.slice(0,-1);
+                        console.log(RerefinedNumber);
+                        const result = eval(RerefinedNumber);
+                        currentValue = result.toString();
+                        display.value = currentValue;
+
                     }
 
                     else if(currentValue.includes("Inv") && currentValue.includes("√"))
@@ -718,6 +747,7 @@
                     else {
                         console.log(currentValue)
                         const convertedValue = currentValue
+                            .replace("rad","")
                             .replace("×", "*")
                             .replace("÷", "/")
                             .replace('%', '*0.01')
@@ -759,7 +789,8 @@
 
                         }
                         else if (value.includes("Rad")){
-                            evaluate();
+                            currentValue += "rad"
+                            display.value = currentValue;
                         }
                         else if (value == "Fx") {
 
