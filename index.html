@@ -599,6 +599,76 @@
                         display.value = currentValue
 
                     }
+                    else if(currentValue.includes("Inv") && currentValue.includes("sin"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(sin","Math.asin")
+                        const Inversedfunction = refinedNumber.slice(0,-1);
+                        console.log(Inversedfunction);
+                        const result = eval(Inversedfunction);
+                        currentValue = result.toString();
+                        console.log(currentValue);
+                        display.value = currentValue;
+                    }
+
+                    else if(currentValue.includes("Inv") && currentValue.includes("cos"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(cos","Math.acos")
+                        const Inversedfunction = refinedNumber.slice(0,-1);
+                        console.log(Inversedfunction);
+                        const result = eval(Inversedfunction);
+                        currentValue = result.toString();
+                        console.log(currentValue);
+                        display.value = currentValue;
+                    }
+
+                    else if(currentValue.includes("Inv") && currentValue.includes("tan"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(tan","Math.atan")
+                        const Inversedfunction = refinedNumber.slice(0,-1);
+                        console.log(Inversedfunction);
+                        const result = eval(Inversedfunction);
+                        currentValue = result.toString();
+                        console.log(currentValue);
+                        display.value = currentValue;
+                    }
+
+                    else if(currentValue.includes("Inv") && currentValue.includes("ln"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(ln","10^")
+                        const Inversedfunction = refinedNumber.slice(0,-1);
+                        console.log(Inversedfunction);
+                        const PowerIndex = Inversedfunction.indexOf("^")
+                        console.log(PowerIndex)
+                        const base = Inversedfunction.slice(0, PowerIndex)
+                        const exp = Inversedfunction.slice(PowerIndex + 2,-1)
+                        console.log(base)
+                        console.log(exp)
+                        const num_base = parseInt(base)
+                        const num_exp = parseInt(exp)
+                        const ans = Math.pow(num_base, num_exp)
+                        currentValue = ans.toString()
+                        display.value = currentValue
+                        
+                    }
+
+                    else if(currentValue.includes("Inv") && currentValue.includes("√"))
+                    {
+                        const refinedNumber = currentValue.replace("Inv(√(","");
+                        const powerNumber = refinedNumber.replace("))","^2")
+                        console.log(powerNumber);
+                        const PowerIndex = powerNumber.indexOf("^")
+                        console.log(PowerIndex)
+                        const base = powerNumber.slice(0, PowerIndex)
+                        const exp = powerNumber.slice(PowerIndex+1)
+                        console.log(base)
+                        console.log(exp)
+                        const num_base = parseInt(base)
+                        const num_exp = parseInt(exp)
+                        const ans = Math.pow(num_base, num_exp)
+                        currentValue = ans.toString()
+                        display.value = currentValue
+
+                    }
                     else if(currentValue.includes("°") && currentValue.includes("sin"))
                     {
                         const refinedNumber = currentValue.replace("°",'');
