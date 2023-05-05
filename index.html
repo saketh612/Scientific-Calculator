@@ -852,8 +852,12 @@
                         }
                         else if(value == "Ans")
                         {
+                            if(currentValue =="")
+                            {
+                                stored =0;
+                            }
                             console.log(stored);
-                            display.value = `Ans:${stored}`;
+                            display.value = stored;
                         }
 
                         else if (value == "Inv") {
