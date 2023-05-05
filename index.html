@@ -813,11 +813,20 @@
                             .replace("log", 'Math.log10')
                             .replace("EXP", 'Math.exp')
                             .replace("ln", 'Math.log')
-                        console.log(convertedValue)
+
+                        if(convertedValue ==="Math.exp")
+                        {
+                            currentValue ="1";
+                            display.value =currentValue
+                        }
+                        else{
+                         console.log(convertedValue)
                         const result = eval(convertedValue);
                         currentValue = result.toString();
                         console.log(currentValue)
                         display.value = currentValue;
+                        }
+                        
                     }
                 }
 
@@ -844,7 +853,7 @@
                         else if(value == "Ans")
                         {
                             console.log(stored);
-                            display.value = stored;
+                            display.value = `Ans:${stored}`;
                         }
 
                         else if (value == "Inv") {
